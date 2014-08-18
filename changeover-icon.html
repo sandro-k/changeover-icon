@@ -1,16 +1,24 @@
+<!--
+
+The `changeover-icon` element has two icons that switch on click
+
+@element changeover-icon
+@homepage https://github.com/sandro-k/changeover-icon
+
+-->
+
 <!-- import polymer-->
 <link rel="import" href="../polymer/polymer.html"/>
 <link rel="import" href="../core-icon/core-icon.html"/>
 <link rel="import" href="../core-icons/core-icons.html"/>
 
-<polymer-element name="changeover-icon"  attributes="up, down, icon" on-click="{{toogle}}" constructor="ChangeoverIcon">
+<polymer-element name="changeover-icon"  attributes="up, down, icon" on-click="{{toggle}}" constructor="ChangeoverIcon">
 
   <template>
     <style>
       :host([disabled]) core-icon{
         color: #d3d3d3;
       }
-
     </style>
     <core-icon icon="{{icon}}" icon="{{icon}}"><content></content></core-icon>
   </template>
@@ -18,28 +26,58 @@
   <script>
     Polymer('changeover-icon', {
       publish: {
+        /**
+         * The default icon that will be loaded
+         *
+         * @attribute icon
+         * @type string
+         * @default ''
+         */
         icon : '',
+
+        /**
+         * The state the icon is in up or down, status == false ? up : down
+         *
+         * @attribute status
+         * @type boolean
+         * @default false
+         */
         status : false,
+
+        /**
+         * The icon that is loaded on `status == false`
+         *
+         * @attribute up
+         * @type string
+         * @default ''
+         */
         up : '',
+
+        /**
+         * The icon that is loaded on `status == true`
+         *
+         * @attrubute down
+         * @type string
+         * @default ''
+         */
         down : '',
-        disabled: false,
+
+        /**
+         * To disable the element set `disabled`  to true
+         *
+         * @attribute disabled
+         * @type boolean
+         * @default false
+         */
+        disabled: false
       },
 
-      created: function () {
-//        console.debug("created:");
+      created: function () {},
 
-      },
-      ready: function () {
-//        console.debug("ready");
-      },
-      toogle: function () {
-        // had a typo
-        // deprecated
-        this.toggle();
-      },
+      ready: function () {},
+
+
       toggle: function () {
-//        console.log(this);
-
         if (!this.disabled){
           if (this.icon === this.down) {
             this.icon = this.up;
@@ -48,34 +86,7 @@
           }
           this.status != this.status;
         }
-      },
-
-
-
-      addClassToElement: function(elem,value){
-      var rspaces = /\s+/;
-      var classNames = (value || "").split( rspaces );
-      var className = " " + elem.className + " ",
-          setClass = elem.className;
-      for ( var c = 0, cl = classNames.length; c < cl; c++ ) {
-        if ( className.indexOf( " " + classNames[c] + " " ) < 0 ) {
-          setClass += " " + classNames[c];
-        }
       }
-      elem.className = setClass.replace(/^\s+|\s+$/g,'');//trim
-    },
-
-    removeClassFromElement: function (elem,value){
-      var rspaces = /\s+/;
-      var rclass = /[\n\t]/g
-      var classNames = (value || "").split( rspaces );
-      var className = (" " + elem.className + " ").replace(rclass, " ");
-      for ( var c = 0, cl = classNames.length; c < cl; c++ ) {
-        className = className.replace(" " + classNames[c] + " ", " ");
-      }
-      elem.className = className.replace(/^\s+|\s+$/g,'');//trim
-    }
-
     });
   </script>
 
