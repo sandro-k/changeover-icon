@@ -1,6 +1,6 @@
 {
     "name": "changeover-icon",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "authors": [
         "Sandro Kock <sandro.kock@gmail.com>"
     ],
@@ -16,7 +16,7 @@
     "private": false,
     "ignore": [],
     "dependencies": {
-        "polymer": "Polymer/polymer#>=0.3.0 <1.0.0",
-        "core-elements": "Polymer/core-elements#~0.3.3"
+      "polymer": "Polymer/polymer#~0.5.5",
+      "core-elements": "Polymer/core-elements#~0.5.5"
     }
 }
